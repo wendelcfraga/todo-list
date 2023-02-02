@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ToDoList {
     private ArrayList<Tarefa> tarefas;
@@ -23,8 +24,88 @@ public class ToDoList {
             }
         }
     }
+
+    public void adicionarTarefa()
+    {
+        Scanner pergunta = new Scanner(System.in);
+        System.out.print("Coloque o nome da tarefa: ");
+        String nome = pergunta.nextLine();
+        System.out.print("Coloque a descrição da terefa: ");
+        String descricao = pergunta.nextLine();
+        System.out.print("Coloque a data de vencimento da tarefa (YYY-MM-DD): ");
+        String data = pergunta.nextLine();
+        System.out.print("Coloque o status da tarefa (TODO, DOING, DONE): ");
+        String status = pergunta.nextLine();
+        Tarefa tarefa = new Tarefa(nome, descricao, status, data);
+        this.tarefas.add(tarefa);
+    }
+
+    public void removerTarefa()
+    {
+        Scanner pergunta = new Scanner(System.in);
+        System.out.print("Digite o número da tarefa que deseja remover: ");
+        int index = pergunta.nextInt() - 1;
+        this.tarefas.remove(index);
+    }
+
+    public void listarTarefas()
+    {
+        System.out.println("Lista de tarefas:");
+        if (this.tarefas.size() == 0)
+        {
+            System.out.println("Lista vazia!");
+        }
+        else
+        {
+            for (int i = 0; i < this.tarefas.size(); i++)
+            {
+                System.out.println((i + 1) + ". " + this.tarefas.get(i).toString());
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         ToDoList todolist = new ToDoList();
 
+        while (true)
+        {
+            System.out.println("*****************************");
+            System.out.println("Menu TODO-List");
+            System.out.println("1. Listar minhas tarefas");
+            System.out.println("2. Adicionar Tarefa");
+            System.out.println("3. Deletar Tarefa");
+            System.out.println("*****************************");
+            System.out.print("Digite um número para escolher ou 's' para sair: ");
+
+            Scanner scan = new Scanner(System.in);
+            if (scan.hasNextInt())
+            {
+                int op = scan.nextInt();
+                switch (op)
+                {
+                    case 1:
+                        todolist.listarTarefas();
+                        break;
+                    case 2:
+                        todolist.adicionarTarefa();
+                        break;
+                    case 3:
+                        todolist.removerTarefa();
+                        break;
+                    default:
+                        System.out.println("Escolha inválida, tente novamente!");
+                }
+            }
+            else if (scan.next().equalsIgnoreCase("s"))
+            {
+                break;
+            }
+            else
+            {
+                System.out.println("Comando não reconhecido, tente novamente!");
+            }
+
+        }
     }
 }

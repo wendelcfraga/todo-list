@@ -47,7 +47,7 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return "Tarefa{" +
+        return "{" +
                 "nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", status='" + status + '\'' +
