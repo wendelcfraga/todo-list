@@ -5,12 +5,17 @@ public class Tarefa {
     private String status;
     private String dataVencimento;
 
-    public Tarefa(String nome, String descricao, String status, String dataVencimento)
+    private String categoria;
+    private int prioridade;
+
+    public Tarefa(String nome, String descricao, String status, String dataVencimento, String categoria, int prioridade)
     {
         this.nome = nome;
         this.descricao = descricao;
         this.status = status;
         this.dataVencimento = dataVencimento;
+        this.categoria = categoria;
+        this.prioridade = prioridade;
     }
 
     public String getNome() {
@@ -45,6 +50,22 @@ public class Tarefa {
         this.dataVencimento = dataVencimento;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getPrioridade() {
+        return prioridade;
+    }
+
+    public void setPrioridade(int prioridade) {
+        this.prioridade = prioridade;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -52,6 +73,8 @@ public class Tarefa {
                 ", descricao='" + descricao + '\'' +
                 ", status='" + status + '\'' +
                 ", dataVencimento='" + dataVencimento + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", prioridade=" + prioridade +
                 '}';
     }
 }

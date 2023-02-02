@@ -36,7 +36,12 @@ public class ToDoList {
         String data = pergunta.nextLine();
         System.out.print("Coloque o status da tarefa (TODO, DOING, DONE): ");
         String status = pergunta.nextLine();
-        Tarefa tarefa = new Tarefa(nome, descricao, status, data);
+        System.out.print("Coloque a categoria: ");
+        String categoria = pergunta.nextLine();
+        System.out.print("Coloque a prioridade: ");
+        int prioridade = pergunta.nextInt();
+
+        Tarefa tarefa = new Tarefa(nome, descricao, status, data, categoria, prioridade);
         this.tarefas.add(tarefa);
         salvarArquivo();
     }
@@ -72,7 +77,7 @@ public class ToDoList {
             PrintWriter escrever = new PrintWriter(new File(DB));
             for (Tarefa tarefa: this.tarefas)
             {
-                escrever.println(tarefa.getNome() + ";" + tarefa.getDescricao() + ";" + tarefa.getDataVencimento() + ";" + tarefa.getStatus());
+                escrever.println(tarefa.getNome() + ";" + tarefa.getDescricao() + ";" + tarefa.getDataVencimento() + ";" + tarefa.getStatus() + ";" + tarefa.getCategoria() + ";" + tarefa.getPrioridade());
             }
             escrever.close();
 
@@ -96,8 +101,10 @@ public class ToDoList {
                 String descricao = dadosTarefa[1];
                 String data = dadosTarefa[2];
                 String status = dadosTarefa[3];
+                String categoria = dadosTarefa[4];
+                int prioridade = Integer.parseInt(dadosTarefa[5]);
 
-                Tarefa tarefa = new Tarefa(nome, descricao, status, data);
+                Tarefa tarefa = new Tarefa(nome, descricao, status, data, categoria, prioridade);
                 this.tarefas.add(tarefa);
             }
             scan.close();
