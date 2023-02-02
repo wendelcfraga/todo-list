@@ -38,6 +38,7 @@ public class ToDoList {
         String status = pergunta.nextLine();
         Tarefa tarefa = new Tarefa(nome, descricao, status, data);
         this.tarefas.add(tarefa);
+        salvarArquivo();
     }
 
     public void removerTarefa()
@@ -64,9 +65,54 @@ public class ToDoList {
         }
     }
 
+    public void salvarArquivo()
+    {
+        try
+        {
+            PrintWriter escrever = new PrintWriter(new File(DB));
+            for (Tarefa tarefa: this.tarefas)
+            {
+                escrever.println(tarefa.getNome() + ";" + tarefa.getDescricao() + ";" + tarefa.getDataVencimento() + ";" + tarefa.getStatus());
+            }
+            escrever.close();
+
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void carregarArquivo()
+    {
+        try
+        {
+            Scanner scan = new Scanner(new File(DB));
+            while (scan.hasNextLine())
+            {
+                String linha = scan.nextLine();
+                String[] dadosTarefa = linha.split(";");
+                String nome = dadosTarefa[0];
+                String descricao = dadosTarefa[1];
+                String data = dadosTarefa[2];
+                String status = dadosTarefa[3];
+
+                Tarefa tarefa = new Tarefa(nome, descricao, status, data);
+                this.tarefas.add(tarefa);
+            }
+            scan.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
 
     public static void main(String[] args) {
         ToDoList todolist = new ToDoList();
+        todolist.carregarArquivo();
 
         while (true)
         {
