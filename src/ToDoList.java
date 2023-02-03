@@ -94,9 +94,9 @@ public class ToDoList {
 
         System.out.print("Coloque o status da tarefa (TODO, DOING, DONE): ");
         String status = pergunta.nextLine();
-        System.out.print("Coloque a categoria (1-5): ");
+        System.out.print("Coloque a categoria: ");
         String categoria = pergunta.nextLine();
-        System.out.print("Coloque a prioridade: ");
+        System.out.print("Coloque a prioridade (1-5): ");
         int prioridade = pergunta.nextInt();
 
         Tarefa tarefa = new Tarefa(nome, descricao, status, data, categoria, prioridade);
@@ -180,7 +180,7 @@ public class ToDoList {
                 String[] dadosTarefa = linha.split(";");
                 String nome = dadosTarefa[0];
                 String descricao = dadosTarefa[1];
-                DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDate data = LocalDate.parse(dadosTarefa[2], formatoData);
                 String status = dadosTarefa[3];
                 String categoria = dadosTarefa[4];
