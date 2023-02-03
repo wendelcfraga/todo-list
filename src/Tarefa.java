@@ -1,15 +1,16 @@
+import java.time.LocalDate;
+
 public class Tarefa {
 
     private String nome;
     private String descricao;
     private String status;
-    private String dataVencimento;
+    private LocalDate dataVencimento;
 
     private String categoria;
     private int prioridade;
 
-    public Tarefa(String nome, String descricao, String status, String dataVencimento, String categoria, int prioridade)
-    {
+    public Tarefa(String nome, String descricao, String status, LocalDate dataVencimento, String categoria, int prioridade) {
         this.nome = nome;
         this.descricao = descricao;
         this.status = status;
@@ -42,11 +43,11 @@ public class Tarefa {
         this.status = status;
     }
 
-    public String getDataVencimento() {
+    public LocalDate getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(String dataVencimento) {
+    public void setDataVencimento(LocalDate dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
