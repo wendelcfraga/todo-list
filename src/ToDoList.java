@@ -36,7 +36,7 @@ public class ToDoList {
         String data = pergunta.nextLine();
         System.out.print("Coloque o status da tarefa (TODO, DOING, DONE): ");
         String status = pergunta.nextLine();
-        System.out.print("Coloque a categoria: ");
+        System.out.print("Coloque a categoria (1-5): ");
         String categoria = pergunta.nextLine();
         System.out.print("Coloque a prioridade: ");
         int prioridade = pergunta.nextInt();
@@ -57,17 +57,58 @@ public class ToDoList {
 
     public void listarTarefas()
     {
-        System.out.println("Lista de tarefas:");
         if (this.tarefas.size() == 0)
         {
             System.out.println("Lista vazia!");
         }
         else
         {
-            for (int i = 0; i < this.tarefas.size(); i++)
+            System.out.println("*****************************");
+            System.out.println("Como deseja listar as tarefas?");
+            System.out.println("1. Por categoria");
+            System.out.println("2. Por prioridade");
+            System.out.println("3. Por status");
+            System.out.println("*****************************");
+            System.out.print("Digite um número para escolher: ");
+
+            int op = new Scanner(System.in).nextInt();
+
+            switch (op)
             {
-                System.out.println((i + 1) + ". " + this.tarefas.get(i).toString());
+                case 1:
+                    System.out.print("Digite uma categoria: ");
+                    String escolhaCategoria = new Scanner(System.in).nextLine();
+
+                    for (Tarefa tarefa: this.tarefas)
+                    {
+                        if (tarefa.getCategoria().equalsIgnoreCase(escolhaCategoria))
+                        {
+                            System.out.println(tarefa);
+                        }
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < this.tarefas.size(); i++)
+                    {
+                        System.out.println((i + 1) + ". " + this.tarefas.get(i).toString());
+                    }
+                    break;
+                case 3:
+                    System.out.print("Digite o status (TODO, DOING, DONE): ");
+                    String escolhaStatus = new Scanner(System.in).nextLine();
+                    for (Tarefa tarefa: this.tarefas)
+                    {
+                        if (tarefa.getStatus().equalsIgnoreCase(escolhaStatus))
+                        {
+                            System.out.println(tarefa);
+                        }
+                    }
+                    break;
+                default:
+                    System.out.println("Escolha inválida!");
             }
+
+
         }
     }
 
@@ -136,6 +177,7 @@ public class ToDoList {
     public static void main(String[] args) {
         ToDoList todolist = new ToDoList();
         todolist.carregarArquivo();
+        todolist.ordenarPrioridade();
 
         while (true)
         {
