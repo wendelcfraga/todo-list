@@ -19,6 +19,8 @@ Clone o repositório e certifique-se de ter o Java instalado na sua máquina - p
 
 ```sh
 git clone https://github.com/wendelcfraga/todo-list
+cd todo-list
+cd src
 javac *.java
 java ToDoList
 ```
