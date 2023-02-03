@@ -43,6 +43,7 @@ public class ToDoList {
 
         Tarefa tarefa = new Tarefa(nome, descricao, status, data, categoria, prioridade);
         this.tarefas.add(tarefa);
+        ordenarPrioridade();
         salvarArquivo();
     }
 
@@ -114,6 +115,21 @@ public class ToDoList {
             e.printStackTrace();
         }
 
+    }
+
+    public void ordenarPrioridade()
+    {
+        for (int i = 1; i < this.tarefas.size(); i++)
+        {
+            Tarefa tarefaAtual = this.tarefas.get(i);
+            int j = i - 1;
+            while (j >= 0 && this.tarefas.get(j).getPrioridade() < tarefaAtual.getPrioridade())
+            {
+                this.tarefas.set(j + 1, this.tarefas.get(j));
+                j--;
+            }
+            this.tarefas.set(j + 1, tarefaAtual);
+        }
     }
 
 
