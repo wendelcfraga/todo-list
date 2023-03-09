@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Lista de Tarefas</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div class="container">
+
+		<h1>Lista de Tarefas</h1>
+
+		<form id="formularioTarefa">
+			<h2>Nova Tarefa:</h2>
+			<label for="nomeTarefa">Nome:</label>
+			<input type="text" id="nomeTarefa" required>
+			<label for="dataTarefa">Data:</label>
+			<input type="date" id="dataTarefa" required>
+			<label for="descricaoTarefa">Descrição:</label>
+			<textarea id="descricaoTarefa" required></textarea>
+			<label for="statusTarefa">Status:</label>
+			<select id="statusTarefa">
+				<option value="TODO">A Fazer</option>
+				<option value="DOING">Fazendo</option>
+				<option value="DONE">Concluído</option>
+			</select>
+			<button type="submit" id="adicionarTarefa">Adicionar Tarefa</button>
+		</form>
+
+		<h2>Filtrar por Status:</h2>
+		<select id="filtroStatus">
+			<option value="">Todos</option>
+			<option value="TODO">A Fazer</option>
+			<option value="DOING">Fazendo</option>
+			<option value="DONE">Concluído</option>
+		</select>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Data</th>
+					<th>Descrição</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+	</div>
+
+	<script src="script.js"></script>
+
+</body>
+</html>
