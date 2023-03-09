@@ -28,4 +28,5 @@ java ToDoList
 
 ## Tecnologias usadas
 
-Java 8 e suas bibliotecas nativas.
+- Backend: Java 8 e suas bibliotecas nativas;
+- Frontend: HTML, JS e CSS.
